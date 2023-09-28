@@ -1,0 +1,1180 @@
+{
+	"info": {
+		"_postman_id": "b69f03cb-8db3-469b-95e3-23fc1e0ea081",
+		"name": "Sample REST API",
+		"description": "for test purposes only\n\nContact Support:\n Name: Interactive Standard Team\n Email: team@interactivestandard.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4687544",
+		"_collection_link": "https://dark-water-739514.postman.co/workspace/dark-water-739514-Workspace~14b15b21-9022-46c1-84ba-9dc92c073c8b/collection/4687544-b69f03cb-8db3-469b-95e3-23fc1e0ea081?action=share&source=collection_link&creator=4687544"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "test",
+					"item": [
+						{
+							"name": "user",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "7. Запрос информации о пользователе который существует в выдаче по gender=male",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"exec": [
+															"// Определим настройки для запроса",
+															"var requestSettings = {",
+															"    url: pm.variables.get('baseUrl') + '/api/test/users?gender=male',",
+															"    method: 'GET',",
+															"    header: 'Content-Type: application/json',",
+															"};",
+															"",
+															"// Отправляем запрос",
+															"pm.sendRequest(requestSettings, (error, response) => {",
+															"    if (error) {",
+															"      console.log(error);",
+															"    }",
+															"    var body = response.json();",
+															"    var randomIndex = Math.floor(Math.random() * body.idList.length);",
+															"    pm.variables.set('randomIdForUserRequest', body.idList[randomIndex]);",
+															"});",
+															"",
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200 for male gender\", () => {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test('Check that request id is equal to response id', function () {",
+															"    var requestId = pm.request.url.query.get('id');",
+															"    var responseBody = pm.response.json();",
+															"    var responseId = responseBody.id;",
+															"    pm.expect(requestId).to.equal(responseId);",
+															"});",
+															"",
+															"pm.test('Check that response user gender is male', function () {",
+															"    var responseBody = pm.response.json();",
+															"    var responseGender = responseBody.user.gender;",
+															"    pm.expect('male').to.equal(responseGender);",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/test/user/{{randomIdForUserRequest}}",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"test",
+														"user",
+														"{{randomIdForUserRequest}}"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/test/user/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"test",
+																"user",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errorCode\": \"<integer>\",\n  \"isSuccess\": \"<boolean>\",\n  \"errorMessage\": \"<string>\",\n  \"user\": {\n    \"age\": \"<integer>\",\n    \"city\": \"<string>\",\n    \"gender\": \"magic\",\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"registrationDate\": \"<dateTime>\"\n  }\n}"
+												}
+											]
+										},
+										{
+											"name": "8. Запрос информации о пользователе который существует в выдаче по gender=female",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"exec": [
+															"// Определим настройки для запроса",
+															"var requestSettings = {",
+															"    url: pm.variables.get('baseUrl') + '/api/test/users?gender=female',",
+															"    method: 'GET',",
+															"    header: 'Content-Type: application/json',",
+															"};",
+															"",
+															"// Отправляем запрос",
+															"pm.sendRequest(requestSettings, (error, response) => {",
+															"    if (error) {",
+															"      console.log(error);",
+															"    }",
+															"    var body = response.json();",
+															"    var randomIndex = Math.floor(Math.random() * body.idList.length);",
+															"    pm.variables.set('randomIdForUserRequest', body.idList[randomIndex]);",
+															"});",
+															"",
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200 for female gender\", () => {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test('Check that request id is equal to response id', function () {",
+															"    var requestId = pm.request.url.query.get('id');",
+															"    var responseBody = pm.response.json();",
+															"    var responseId = responseBody.id;",
+															"    pm.expect(requestId).to.equal(responseId);",
+															"});",
+															"",
+															"pm.test('Check that response user gender is male', function () {",
+															"    var responseBody = pm.response.json();",
+															"    var responseGender = responseBody.user.gender;",
+															"    pm.expect('male').to.equal(responseGender);",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/test/user/{{randomIdForUserRequest}}",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"test",
+														"user",
+														"{{randomIdForUserRequest}}"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/test/user/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"test",
+																"user",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errorCode\": \"<integer>\",\n  \"isSuccess\": \"<boolean>\",\n  \"errorMessage\": \"<string>\",\n  \"user\": {\n    \"age\": \"<integer>\",\n    \"city\": \"<string>\",\n    \"gender\": \"magic\",\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"registrationDate\": \"<dateTime>\"\n  }\n}"
+												}
+											]
+										},
+										{
+											"name": "9. Запрос информации о пользователе который не существует в выдаче по gender=any",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"exec": [
+															"// Определим настройки для запроса",
+															"var requestSettings = {",
+															"    url: pm.variables.get('baseUrl') + '/api/test/users?gender=any',",
+															"    method: 'GET',",
+															"    header: 'Content-Type: application/json',",
+															"};",
+															"",
+															"function findMissingNumber(set) {",
+															"    let i = 1;",
+															"    while (set.has(i)) {",
+															"        i++;",
+															"    }",
+															"    return i;",
+															"}",
+															"",
+															"// Отправляем запрос",
+															"pm.sendRequest(requestSettings, (error, response) => {",
+															"    if (error) {",
+															"      console.log(error);",
+															"    }",
+															"    var body = response.json();",
+															"    pm.variables.set('notExistingIdForUserRequest', findMissingNumber(new Set(body.idList)));",
+															"});",
+															"",
+															""
+														],
+														"type": "text/javascript"
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 404 for female gender\", () => {",
+															"    pm.response.to.have.status(404);",
+															"});",
+															"",
+															"pm.test(\"Response has the required fields\", function () {",
+															"    const responseData = pm.response.json();",
+															"    pm.expect(responseData).to.be.an('object');",
+															"    pm.expect(responseData.isSuccess).to.exist;",
+															"    pm.expect(responseData.errorCode).to.exist;",
+															"    pm.expect(responseData.errorMessage).is.exist;",
+															"    pm.expect(responseData.user).to.exist;",
+															"});",
+															" ",
+															"pm.test(\"isSuccess is a boolean value and it's true\", function () {",
+															"    const responseData = pm.response.json();",
+															"    pm.expect(responseData.isSuccess).to.be.a(\"boolean\");",
+															"    pm.expect(responseData.isSuccess).to.be.true;",
+															"});",
+															"",
+															"pm.test(\"errorCode is 404\", function () {",
+															"    const responseData = pm.response.json();",
+															"    pm.expect(responseData.errorCode).to.be.eq(404);",
+															"});",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/test/user/{{notExistingIdForUserRequest}}",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"test",
+														"user",
+														"{{notExistingIdForUserRequest}}"
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/test/user/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"test",
+																"user",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errorCode\": \"<integer>\",\n  \"isSuccess\": \"<boolean>\",\n  \"errorMessage\": \"<string>\",\n  \"user\": {\n    \"age\": \"<integer>\",\n    \"city\": \"<string>\",\n    \"gender\": \"magic\",\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"registrationDate\": \"<dateTime>\"\n  }\n}"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "users",
+							"item": [
+								{
+									"name": "1. Получение идентификаторов пользователей по критерию gender=male",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200 for male gender\", () => {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"Response has the required fields\", function () {",
+													"    const responseData = pm.response.json();",
+													"    pm.expect(responseData).to.be.an('object');",
+													"    pm.expect(responseData.isSuccess).to.exist;",
+													"    pm.expect(responseData.errorCode).to.exist;",
+													"    pm.expect(responseData.errorMessage).is.null;",
+													"    pm.expect(responseData.idList).to.exist;",
+													"});",
+													"",
+													"pm.test(\"Male's idList isn't empty\", function () {",
+													"    var responseData = pm.response.json();",
+													"    var idList = responseData.idList;",
+													"    pm.expect(idList.length).to.be.greaterThan(0, \"Male's idList should not be empty\");",
+													"});",
+													"",
+													" ",
+													"pm.test(\"isSuccess is a boolean value and it's true\", function () {",
+													"    const responseData = pm.response.json();",
+													"    pm.expect(responseData.isSuccess).to.be.a(\"boolean\");",
+													"    pm.expect(responseData.isSuccess).to.be.true;",
+													"});",
+													"",
+													"pm.test(\"errorCode is an integer value and equals 0\", function () {",
+													"    const responseData = pm.response.json();",
+													"    pm.expect(responseData.errorCode).to.be.a('number');",
+													"});",
+													"",
+													"",
+													"pm.test(\"errorMessage is either null or a non-empty string\", function () {",
+													"    const responseData = pm.response.json();",
+													"",
+													"    pm.expect(responseData.errorMessage).to.satisfy(function (errorMessage) {",
+													"        return errorMessage === null || typeof errorMessage === \"string\" && errorMessage.length > 0;",
+													"    }, \"errorMessage should be either null or a non-empty string\");",
+													"});",
+													"",
+													"// save",
+													"const maleIdList = pm.response.json().idList;",
+													"pm.globals.set(\"maleIdList\", maleIdList);",
+													"",
+													"",
+													"",
+													" ",
+													"",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "http://{{baseUrl}}/api/test/users?gender=male",
+											"protocol": "http",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"test",
+												"users"
+											],
+											"query": [
+												{
+													"key": "gender",
+													"value": "male",
+													"description": "(Required) gender"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "2. Получение идентификаторов пользователей по критерию gender=female",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200 for female gender\", () => {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"Response has the required fields\", function () {",
+													"    const responseData = pm.response.json();",
+													"    pm.expect(responseData).to.be.an('object');",
+													"    pm.expect(responseData.isSuccess).to.exist;",
+													"    pm.expect(responseData.errorCode).to.exist;",
+													"    pm.expect(responseData.errorMessage).is.null;",
+													"    pm.expect(responseData.idList).to.exist;",
+													"});",
+													"",
+													"pm.test(\"Female's idList isn't empty\", function () {",
+													"    var responseData = pm.response.json();",
+													"    var idList = responseData.idList;",
+													"    pm.expect(idList.length).to.be.greaterThan(0, \"Female's idList should not be empty\");",
+													"});",
+													"",
+													" ",
+													"pm.test(\"isSuccess is a boolean value and it's true\", function () {",
+													"    const responseData = pm.response.json();",
+													"    pm.expect(responseData.isSuccess).to.be.a(\"boolean\");",
+													"    pm.expect(responseData.isSuccess).to.be.true;",
+													"});",
+													"",
+													"pm.test(\"errorCode is an integer value and equals 0\", function () {",
+													"    const responseData = pm.response.json();",
+													"    pm.expect(responseData.errorCode).to.be.a('number');",
+													"});",
+													"",
+													"",
+													"pm.test(\"errorMessage is either null or a non-empty string\", function () {",
+													"    const responseData = pm.response.json();",
+													"",
+													"    pm.expect(responseData.errorMessage).to.satisfy(function (errorMessage) {",
+													"        return errorMessage === null || typeof errorMessage === \"string\" && errorMessage.length > 0;",
+													"    }, \"errorMessage should be either null or a non-empty string\");",
+													"});",
+													"",
+													"// save",
+													"const femaleIdList = pm.response.json().idList;",
+													"pm.globals.set(\"femaleIdList\", femaleIdList);",
+													"",
+													"",
+													" ",
+													"",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "http://{{baseUrl}}/api/test/users?gender=female",
+											"protocol": "http",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"test",
+												"users"
+											],
+											"query": [
+												{
+													"key": "gender",
+													"value": "female",
+													"description": "(Required) gender"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "3-5. Получение идентификаторов пользователей по критерию gender=any",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200 for any gender\", () => {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"Response has the required fields\", function () {",
+													"    const responseData = pm.response.json();",
+													"    pm.expect(responseData).to.be.an('object');",
+													"    pm.expect(responseData.isSuccess).to.exist;",
+													"    pm.expect(responseData.errorCode).to.exist;",
+													"    pm.expect(responseData.errorMessage).is.null;",
+													"    pm.expect(responseData.idList).to.exist;",
+													"});",
+													"",
+													"pm.test(\"Any's idList isn't empty\", function () {",
+													"    var responseData = pm.response.json();",
+													"    var idList = responseData.idList;",
+													"    pm.expect(idList.length).to.be.greaterThan(0, \"Any's idList should not be empty\");",
+													"});",
+													"",
+													" ",
+													"pm.test(\"isSuccess is a boolean value and it's true\", function () {",
+													"    const responseData = pm.response.json();",
+													"    pm.expect(responseData.isSuccess).to.be.a(\"boolean\");",
+													"    pm.expect(responseData.isSuccess).to.be.true;",
+													"});",
+													"",
+													"pm.test(\"errorCode is an integer value and equals 0\", function () {",
+													"    const responseData = pm.response.json();",
+													"    pm.expect(responseData.errorCode).to.be.a('number');",
+													"});",
+													"",
+													"",
+													"pm.test(\"errorMessage is either null or a non-empty string\", function () {",
+													"    const responseData = pm.response.json();",
+													"",
+													"    pm.expect(responseData.errorMessage).to.satisfy(function (errorMessage) {",
+													"        return errorMessage === null || typeof errorMessage === \"string\" && errorMessage.length > 0;",
+													"    }, \"errorMessage should be either null or a non-empty string\");",
+													"});",
+													"",
+													"pm.test(\"Any's idList size is equal to male's idList size plus female's idList size\", function () {",
+													"    const responseData = pm.response.json();",
+													"    const anyIdListSize = responseData.idList.length;",
+													"    const maleIdList = pm.globals.get(\"maleIdList\");",
+													"    const femaleIdList = pm.globals.get(\"femaleIdList\");",
+													"",
+													"    pm.expect(anyIdListSize)",
+													"    .to.be.eq(maleIdList.length + femaleIdList.length, \"Size mismatch\");",
+													"});",
+													"",
+													"pm.test(\"Male and female ids shouldn't intersect\", function () {",
+													"    var maleSet = new Set(pm.globals.get(\"maleIdList\"));",
+													"    var femaleSet = new Set(pm.globals.get(\"femaleIdList\"));",
+													"",
+													"    var intersection = maleSet.filter(x => femaleSet.has(x));",
+													"",
+													"    pm.expect(intersection.size).to.equal(0);",
+													"});",
+													"",
+													"pm.collectionVariables.set(\"variable_key\", \"variable_value\");",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "http://{{baseUrl}}/api/test/users?gender=any",
+											"protocol": "http",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"test",
+												"users"
+											],
+											"query": [
+												{
+													"key": "gender",
+													"value": "any",
+													"description": "(Required) gender"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "6. Получение идентификаторов пользователей по несуществующему gender",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400 for any gender\", () => {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"",
+													"pm.test(\"Response has the required fields\", function () {",
+													"    const responseData = pm.response.json();",
+													"    pm.expect(responseData).to.be.an('object');",
+													"    pm.expect(responseData.timestamp).to.exist;",
+													"    pm.expect(responseData.status).to.exist;",
+													"    pm.expect(responseData.error).is.exist;",
+													"    pm.expect(responseData.message).is.exist;",
+													"    pm.expect(responseData.path).to.exist;",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "http://{{baseUrl}}/api/test/users?gender=not_existing_gender",
+											"protocol": "http",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"test",
+												"users"
+											],
+											"query": [
+												{
+													"key": "gender",
+													"value": "not_existing_gender",
+													"description": "(Required) gender"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "10. Получение идентификаторов пользователей без передачи gender",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400 for any gender\", () => {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"",
+													"pm.test(\"Response has the required fields\", function () {",
+													"    const responseData = pm.response.json();",
+													"    pm.expect(responseData).to.be.an('object');",
+													"    pm.expect(responseData.timestamp).to.exist;",
+													"    pm.expect(responseData.status).to.exist;",
+													"    pm.expect(responseData.error).is.exist;",
+													"    pm.expect(responseData.message).is.exist;",
+													"    pm.expect(responseData.path).to.exist;",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "http://{{baseUrl}}/api/test/users",
+											"protocol": "http",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"test",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "11. Получение идентификаторов пользователей со случайной строкой в gender",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400 for any gender\", () => {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"",
+													"pm.test(\"Response has the required fields\", function () {",
+													"    const responseData = pm.response.json();",
+													"    pm.expect(responseData).to.be.an('object');",
+													"    pm.expect(responseData.timestamp).to.exist;",
+													"    pm.expect(responseData.status).to.exist;",
+													"    pm.expect(responseData.error).is.exist;",
+													"    pm.expect(responseData.message).is.exist;",
+													"    pm.expect(responseData.path).to.exist;",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "http://{{baseUrl}}/api/test/users?gender=random_str",
+											"protocol": "http",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"test",
+												"users"
+											],
+											"query": [
+												{
+													"key": "gender",
+													"value": "random_str"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "12. Получение идентификаторов пользователей по критерию gender=Male",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400 for any gender\", () => {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"",
+													"pm.test(\"Response has the required fields\", function () {",
+													"    const responseData = pm.response.json();",
+													"    pm.expect(responseData).to.be.an('object');",
+													"    pm.expect(responseData.timestamp).to.exist;",
+													"    pm.expect(responseData.status).to.exist;",
+													"    pm.expect(responseData.error).is.exist;",
+													"    pm.expect(responseData.message).is.exist;",
+													"    pm.expect(responseData.path).to.exist;",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "http://{{baseUrl}}/api/test/users?gender=Male",
+											"protocol": "http",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"test",
+												"users"
+											],
+											"query": [
+												{
+													"key": "gender",
+													"value": "Male"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "13. Получение идентификаторов пользователей по критерию gender=male&gender=female",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 400 for any gender\", () => {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"",
+													"pm.test(\"Response has the required fields\", function () {",
+													"    const responseData = pm.response.json();",
+													"    pm.expect(responseData).to.be.an('object');",
+													"    pm.expect(responseData.timestamp).to.exist;",
+													"    pm.expect(responseData.status).to.exist;",
+													"    pm.expect(responseData.error).is.exist;",
+													"    pm.expect(responseData.message).is.exist;",
+													"    pm.expect(responseData.path).to.exist;",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "http://{{baseUrl}}/api/test/users?gender=male&gender=female",
+											"protocol": "http",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"test",
+												"users"
+											],
+											"query": [
+												{
+													"key": "gender",
+													"value": "male"
+												},
+												{
+													"key": "gender",
+													"value": "female"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "14. Получение идентификаторов пользователей по критерию gender без заголовка",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200 for request without any headers\", () => {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "http://{{baseUrl}}/api/test/users?gender=male",
+											"protocol": "http",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"test",
+												"users"
+											],
+											"query": [
+												{
+													"key": "gender",
+													"value": "male"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "15. Получение идентификаторов пользователей по критерию gender с неверным HTTP методом",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 405 for wrong HTTP method\", () => {",
+													"    pm.response.to.have.status(405);",
+													"});",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "http://{{baseUrl}}/api/test/users?gender=male",
+											"protocol": "http",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"test",
+												"users"
+											],
+											"query": [
+												{
+													"key": "gender",
+													"value": "male"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "//hr-challenge.interactive-ventures.com"
+		},
+		{
+			"key": "gender",
+			"value": "hjhjh"
+		},
+		{
+			"key": "variable_key",
+			"value": ""
+		}
+	]
+}

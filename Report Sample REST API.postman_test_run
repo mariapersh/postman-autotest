@@ -1,0 +1,599 @@
+{
+	"id": "756ccd61-737c-4abb-b86a-83352a868a6a",
+	"name": "Sample REST API Copy",
+	"timestamp": "2023-09-28T18:58:00.563Z",
+	"collection_id": "2471343-34600ea1-c7b9-42b1-8609-008b5b34eb1e",
+	"folder_id": 0,
+	"environment_id": "2471343-1b27eb77-425b-4428-b644-393c6fda1b70",
+	"totalPass": 32,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2023-09-28T18:57:57.181Z",
+	"totalFail": 10,
+	"results": [
+		{
+			"id": "9f1711cb-0859-435c-b1aa-8682f1feae4f",
+			"name": "7. Запрос информации о пользователе который существует в выдаче по gender=male",
+			"url": "hr-challenge.interactive-ventures.com/api/test/user/15",
+			"time": 94,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200 for male gender": true,
+				"Check that request id is equal to response id": true,
+				"Check that response user gender is male": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200 for male gender": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check that request id is equal to response id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check that response user gender is male": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				94
+			],
+			"allTests": [
+				{
+					"Status code is 200 for male gender": true,
+					"Check that request id is equal to response id": true,
+					"Check that response user gender is male": true
+				}
+			]
+		},
+		{
+			"id": "fc5a56b7-030b-4ab2-bc9d-cd346bcfb8cd",
+			"name": "8. Запрос информации о пользователе который существует в выдаче по gender=female",
+			"url": "hr-challenge.interactive-ventures.com/api/test/user/5",
+			"time": 92,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200 for female gender": true,
+				"Check that request id is equal to response id": true,
+				"Check that response user gender is male": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200 for female gender": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check that request id is equal to response id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Check that response user gender is male": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				92
+			],
+			"allTests": [
+				{
+					"Status code is 200 for female gender": true,
+					"Check that request id is equal to response id": true,
+					"Check that response user gender is male": false
+				}
+			]
+		},
+		{
+			"id": "92321a74-aedd-4c30-90c0-9827d9492b41",
+			"name": "9. Запрос информации о пользователе который не существует в выдаче по gender=any",
+			"url": "hr-challenge.interactive-ventures.com/api/test/user/1",
+			"time": 94,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 404 for female gender": false,
+				"Response has the required fields": false,
+				"isSuccess is a boolean value and it's true": true,
+				"errorCode is 404": false
+			},
+			"testPassFailCounts": {
+				"Status code is 404 for female gender": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response has the required fields": {
+					"pass": 0,
+					"fail": 1
+				},
+				"isSuccess is a boolean value and it's true": {
+					"pass": 1,
+					"fail": 0
+				},
+				"errorCode is 404": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				94
+			],
+			"allTests": [
+				{
+					"Status code is 404 for female gender": false,
+					"Response has the required fields": false,
+					"isSuccess is a boolean value and it's true": true,
+					"errorCode is 404": false
+				}
+			]
+		},
+		{
+			"id": "308a9405-f382-43e9-bf84-eb2d7659e759",
+			"name": "1. Получение идентификаторов пользователей по критерию gender=male",
+			"url": "http://hr-challenge.interactive-ventures.com/api/test/users?gender=male",
+			"time": 91,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200 for male gender": true,
+				"Response has the required fields": true,
+				"Male's idList isn't empty": true,
+				"isSuccess is a boolean value and it's true": true,
+				"errorCode is an integer value and equals 0": true,
+				"errorMessage is either null or a non-empty string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200 for male gender": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the required fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Male's idList isn't empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"isSuccess is a boolean value and it's true": {
+					"pass": 1,
+					"fail": 0
+				},
+				"errorCode is an integer value and equals 0": {
+					"pass": 1,
+					"fail": 0
+				},
+				"errorMessage is either null or a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				91
+			],
+			"allTests": [
+				{
+					"Status code is 200 for male gender": true,
+					"Response has the required fields": true,
+					"Male's idList isn't empty": true,
+					"isSuccess is a boolean value and it's true": true,
+					"errorCode is an integer value and equals 0": true,
+					"errorMessage is either null or a non-empty string": true
+				}
+			]
+		},
+		{
+			"id": "8bd77ad0-10cf-45b4-bf3f-26d4dd18dc3e",
+			"name": "2. Получение идентификаторов пользователей по критерию gender=female",
+			"url": "http://hr-challenge.interactive-ventures.com/api/test/users?gender=female",
+			"time": 93,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200 for female gender": true,
+				"Response has the required fields": true,
+				"Female's idList isn't empty": true,
+				"isSuccess is a boolean value and it's true": true,
+				"errorCode is an integer value and equals 0": true,
+				"errorMessage is either null or a non-empty string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200 for female gender": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the required fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Female's idList isn't empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"isSuccess is a boolean value and it's true": {
+					"pass": 1,
+					"fail": 0
+				},
+				"errorCode is an integer value and equals 0": {
+					"pass": 1,
+					"fail": 0
+				},
+				"errorMessage is either null or a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				93
+			],
+			"allTests": [
+				{
+					"Status code is 200 for female gender": true,
+					"Response has the required fields": true,
+					"Female's idList isn't empty": true,
+					"isSuccess is a boolean value and it's true": true,
+					"errorCode is an integer value and equals 0": true,
+					"errorMessage is either null or a non-empty string": true
+				}
+			]
+		},
+		{
+			"id": "c728d17c-74c6-4a94-a259-4b34b65dd206",
+			"name": "3-5. Получение идентификаторов пользователей по критерию gender=any",
+			"url": "http://hr-challenge.interactive-ventures.com/api/test/users?gender=any",
+			"time": 91,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200 for any gender": true,
+				"Response has the required fields": true,
+				"Any's idList isn't empty": true,
+				"isSuccess is a boolean value and it's true": true,
+				"errorCode is an integer value and equals 0": true,
+				"errorMessage is either null or a non-empty string": true,
+				"Any's idList size is equal to male's idList size plus female's idList size": false,
+				"Male and female ids shouldn't intersect": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200 for any gender": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the required fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Any's idList isn't empty": {
+					"pass": 1,
+					"fail": 0
+				},
+				"isSuccess is a boolean value and it's true": {
+					"pass": 1,
+					"fail": 0
+				},
+				"errorCode is an integer value and equals 0": {
+					"pass": 1,
+					"fail": 0
+				},
+				"errorMessage is either null or a non-empty string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Any's idList size is equal to male's idList size plus female's idList size": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Male and female ids shouldn't intersect": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				91
+			],
+			"allTests": [
+				{
+					"Status code is 200 for any gender": true,
+					"Response has the required fields": true,
+					"Any's idList isn't empty": true,
+					"isSuccess is a boolean value and it's true": true,
+					"errorCode is an integer value and equals 0": true,
+					"errorMessage is either null or a non-empty string": true,
+					"Any's idList size is equal to male's idList size plus female's idList size": false,
+					"Male and female ids shouldn't intersect": false
+				}
+			]
+		},
+		{
+			"id": "6e95e464-c8f9-4fae-ba07-d543c65872bc",
+			"name": "6. Получение идентификаторов пользователей по несуществующему gender",
+			"url": "http://hr-challenge.interactive-ventures.com/api/test/users?gender=not_existing_gender",
+			"time": 93,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status code is 400 for any gender": false,
+				"Response has the required fields": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400 for any gender": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response has the required fields": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				93
+			],
+			"allTests": [
+				{
+					"Status code is 400 for any gender": false,
+					"Response has the required fields": true
+				}
+			]
+		},
+		{
+			"id": "66fae01e-de1c-46e0-8051-55cb5711448c",
+			"name": "10. Получение идентификаторов пользователей без передачи gender",
+			"url": "http://hr-challenge.interactive-ventures.com/api/test/users",
+			"time": 93,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400 for any gender": true,
+				"Response has the required fields": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400 for any gender": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the required fields": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				93
+			],
+			"allTests": [
+				{
+					"Status code is 400 for any gender": true,
+					"Response has the required fields": true
+				}
+			]
+		},
+		{
+			"id": "1e4338e3-4c55-4836-9aa3-b8150203a425",
+			"name": "11. Получение идентификаторов пользователей со случайной строкой в gender",
+			"url": "http://hr-challenge.interactive-ventures.com/api/test/users?gender=random_str",
+			"time": 97,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status code is 400 for any gender": false,
+				"Response has the required fields": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400 for any gender": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response has the required fields": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				97
+			],
+			"allTests": [
+				{
+					"Status code is 400 for any gender": false,
+					"Response has the required fields": true
+				}
+			]
+		},
+		{
+			"id": "f7d4e7ee-6886-41c6-b896-fb2e26300d82",
+			"name": "12. Получение идентификаторов пользователей по критерию gender=Male",
+			"url": "http://hr-challenge.interactive-ventures.com/api/test/users?gender=Male",
+			"time": 93,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status code is 400 for any gender": false,
+				"Response has the required fields": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400 for any gender": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response has the required fields": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				93
+			],
+			"allTests": [
+				{
+					"Status code is 400 for any gender": false,
+					"Response has the required fields": true
+				}
+			]
+		},
+		{
+			"id": "450c1b08-1241-47f4-9cb6-9197efa0ccd0",
+			"name": "13. Получение идентификаторов пользователей по критерию gender=male&gender=female",
+			"url": "http://hr-challenge.interactive-ventures.com/api/test/users?gender=male&gender=female",
+			"time": 95,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Status code is 400 for any gender": false,
+				"Response has the required fields": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400 for any gender": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response has the required fields": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				95
+			],
+			"allTests": [
+				{
+					"Status code is 400 for any gender": false,
+					"Response has the required fields": true
+				}
+			]
+		},
+		{
+			"id": "07cc0b05-ed4e-40a3-8f74-a88d60c0d55f",
+			"name": "14. Получение идентификаторов пользователей по критерию gender без заголовка",
+			"url": "http://hr-challenge.interactive-ventures.com/api/test/users?gender=male",
+			"time": 94,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200 for request without any headers": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200 for request without any headers": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				94
+			],
+			"allTests": [
+				{
+					"Status code is 200 for request without any headers": true
+				}
+			]
+		},
+		{
+			"id": "3c393f4f-89e1-49b4-9509-bb608fec911a",
+			"name": "15. Получение идентификаторов пользователей по критерию gender с неверным HTTP методом",
+			"url": "http://hr-challenge.interactive-ventures.com/api/test/users?gender=male",
+			"time": 95,
+			"responseCode": {
+				"code": 405,
+				"name": "Method Not Allowed"
+			},
+			"tests": {
+				"Status code is 405 for wrong HTTP method": true
+			},
+			"testPassFailCounts": {
+				"Status code is 405 for wrong HTTP method": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				95
+			],
+			"allTests": [
+				{
+					"Status code is 405 for wrong HTTP method": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1215,
+	"collection": {
+		"requests": [
+			{
+				"id": "9f1711cb-0859-435c-b1aa-8682f1feae4f",
+				"method": "GET"
+			},
+			{
+				"id": "fc5a56b7-030b-4ab2-bc9d-cd346bcfb8cd",
+				"method": "GET"
+			},
+			{
+				"id": "92321a74-aedd-4c30-90c0-9827d9492b41",
+				"method": "GET"
+			},
+			{
+				"id": "308a9405-f382-43e9-bf84-eb2d7659e759",
+				"method": "GET"
+			},
+			{
+				"id": "8bd77ad0-10cf-45b4-bf3f-26d4dd18dc3e",
+				"method": "GET"
+			},
+			{
+				"id": "c728d17c-74c6-4a94-a259-4b34b65dd206",
+				"method": "GET"
+			},
+			{
+				"id": "6e95e464-c8f9-4fae-ba07-d543c65872bc",
+				"method": "GET"
+			},
+			{
+				"id": "66fae01e-de1c-46e0-8051-55cb5711448c",
+				"method": "GET"
+			},
+			{
+				"id": "1e4338e3-4c55-4836-9aa3-b8150203a425",
+				"method": "GET"
+			},
+			{
+				"id": "f7d4e7ee-6886-41c6-b896-fb2e26300d82",
+				"method": "GET"
+			},
+			{
+				"id": "450c1b08-1241-47f4-9cb6-9197efa0ccd0",
+				"method": "GET"
+			},
+			{
+				"id": "07cc0b05-ed4e-40a3-8f74-a88d60c0d55f",
+				"method": "GET"
+			},
+			{
+				"id": "3c393f4f-89e1-49b4-9509-bb608fec911a",
+				"method": "POST"
+			}
+		]
+	}
+}
